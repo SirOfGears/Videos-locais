@@ -62,13 +62,13 @@ def upload_file():
     videos = load_videos()
     if channel_code not in videos:
         videos[channel_code] = []
-    # Agora armazenamos apenas o nome do arquivo no banco de dados
+    # armazenar o nome no banco de dados
     videos[channel_code].append({'title': title, 'file': filename})
     save_videos(videos)
     
     return redirect(url_for('channel', channel_code=channel_code))
 
-# Rota para servir vídeos a partir da pasta uploads
+# Rota para rodar vídeos a partir da pasta uploads
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
@@ -78,7 +78,7 @@ def random_video(channel_code):
     videos = load_videos().get(channel_code, [])
     
     if not videos:
-        return redirect(url_for('channel', channel_code=channel_code))  # Se não houver vídeos, volta para a página do canal
+        return redirect(url_for('channel', channel_code=channel_code))  # Se não existir vídeos, volta para a página do canal
     
     selected_video = random.choice(videos)  # Escolhe um vídeo aleatório
     return redirect(url_for('uploaded_file', filename=selected_video['file']))  # Redireciona para o vídeo
@@ -88,4 +88,4 @@ def random_video_route(channel_code):
     return random_video(channel_code)
 
 if __name__ == '__main__':
-    socketio.run(app, host='192.168.5.21', port=5000, debug=True)
+    socketio.run(app, host='seuipv4aqui', port=5000, debug=True)
