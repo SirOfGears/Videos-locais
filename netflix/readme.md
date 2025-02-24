@@ -8,6 +8,3 @@ o que faz:
     títulos personalizados;
     salva os vídeos no canal enviado.
     Mostra os vídeos lado a lado como na netflix
-
-próximas implementações:
-    -capacidade de funcionar sem ser na rede local(complicado e trabalhoso, não tem necessidade de fazer por agora)
