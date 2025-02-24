@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canal {{ channel_code }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="channel-container">
+        <h1>Canal {{ channel_code }}</h1>
+        
+        <div class="random-play-container">
+            <button id="random-play" class="random-btn">Reprodução Aleatória</button>
+        </div>
+
+        <h2>Vídeos Disponíveis</h2>
+        {% if videos %}
+            <div class="video-container">
+                {% for video in videos %}
+                    <div class="video-card">
+                        <h3>{{ video.title }}</h3>
+                        <video controls poster="{{ url_for('static', filename='img/video-placeholder.jpg') }}">
+                            <source src="{{ url_for('uploaded_file', filename=video.file) }}" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-videos">Nenhum vídeo disponível neste canal.</p>
+        {% endif %}
+
+        <h2>Enviar Vídeo</h2>
+        <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="upload-form">
+            <input type="hidden" name="channel_code" value="{{ channel_code }}">
+            <input type="text" name="title" placeholder="Título do vídeo" required>
+            <input type="file" name="file" accept="video/*" required>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <a href="{{ url_for('index') }}" class="back-link">Voltar à página inicial</a>
+    </div>
+
+    <script>
+        document.getElementById("random-play").addEventListener("click", function () {
+            let videos = document.querySelectorAll(".video-card video");
+            if (videos.length > 0) {
+                let randomIndex = Math.floor(Math.random() * videos.length);
+                videos[randomIndex].play();
+            }
+        });
+    </script>
+</body>
+</html>

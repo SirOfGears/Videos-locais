@@ -1,0 +1,130 @@
+/* Resetando algumas margens e padding para garantir um layout limpo */
+body, h1, h2, h3, p, form, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    line-height: 1.6;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Cabeçalhos */
+h1, h2, h3 {
+    color: #ffcc00;
+    margin-bottom: 15px;
+}
+
+/* Container de vídeos */
+.video-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Cartão de vídeo */
+.video-card {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    width: 300px;
+    text-align: center;
+}
+
+.video-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.video-card video {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Lista de vídeos */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #1e1e1e;
+    padding: 15px;
+    margin: 10px auto;
+    max-width: 640px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Formulário de envio */
+form {
+    margin: 20px auto;
+    max-width: 400px;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input {
+    background: #333;
+    color: #fff;
+}
+
+button {
+    background: #ffcc00;
+    color: #121212;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e6b800;
+}
+
+/* Botão de reprodução aleatória */
+.random-play-container {
+    margin: 20px 0;
+}
+
+.random-btn {
+    background: #ffcc00;
+    color: #121212;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.random-btn:hover {
+    background: #e6b800;
+}
+
+/* Links */
+a {
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #9e0303;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming Local</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .about {
+            margin-top: 72px; /* Aumenta o espaço acima da seção 'Sobre o site' */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao Streaming Local!</h1>
+        <p>Assista aos vídeos dos seus canais favoritos de forma simples e rápida.</p>
+        <p>Digite o número do canal para começar!</p>
+    </header>
+
+    <section class="search-container">
+        <h2>Procurar Canal</h2>
+        <form action="{{ url_for('channel', channel_code='') }}" method="get" onsubmit="return redirectToChannel()">
+            <input type="text" id="channel_code" name="channel_code" placeholder="Número do canal" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </section>
+
+    <section class="popular-channels">
+        <h2>Canais Populares</h2>
+        <div class="channels-list">
+            <div class="channel-card">
+                <h3>Canal 0</h3>
+                <a href="{{ url_for('channel', channel_code='0') }}">Ir para o canal</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>Sobre o site</h2>
+        <p>O Streaming Local permite que você crie canais e envie seus vídeos para assisti-los em sua rede local, sem precisar pagar por nenhuma assinatura.</p>
+        <p>Seja para compartilhamento de conteúdo entre amigos ou como uma biblioteca pessoal de vídeos, esse site é para você!</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Streaming Local. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function redirectToChannel() {
+            let channelCode = document.getElementById("channel_code").value;
+            if (channelCode.trim() === "") {
+                alert("Digite um número de canal válido!");
+                return false;
+            }
+            window.location.href = "/channel/" + encodeURIComponent(channelCode);
+            return false;
+        }
+    </script>
+</body>
+</html>
